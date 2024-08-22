@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Two Players</title>
+     <style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: antiquewhite;
+    margin: 0;
+
+.container {
+    text-align: center;
+    /* background: rgba(255, 255, 255, 0.8);  */
+    padding: 20px;
+    border-radius: 10px; 
+}
+
+.choices button {
+    font-size: 18px;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4cafaa; 
+    color: white; 
+    border: none;
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
+}
+
+.choices button:hover {
+    background-color: #45a049; 
+}
+
+#result p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rock Paper Scissors</h1>
+    <div class="choices">
+      <button onclick="play('rock')">Rock</button>
+      <button onclick="play('paper')">Paper</button>
+      <button onclick="play('scissors')">Scissors</button>
+    </div>
+    <div id="result">
+      <p id="userChoice"></p>
+      <p id="computerChoice"></p>
+      <p id="outcome"></p>
+    </div>
+  </div>
+    <script>
+        function play(userChoice) {
+const choices = ['rock', 'paper', 'scissors'];
+const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+let result = '';
+if (userChoice === computerChoice) {
+  result = 'It\'s a tie!';
+} else if (
+  (userChoice === 'rock' && computerChoice === 'scissors') ||
+  (userChoice === 'paper' && computerChoice === 'rock') ||
+  (userChoice === 'scissors' && computerChoice === 'paper')
+) {
+  result = 'You win!';
+} else {
+  result = 'Computer wins!';
+}
+document.getElementById('userChoice').textContent = `You chose: ${userChoice}`;
+document.getElementById('computerChoice').textContent = `Computer chose: ${computerChoice}`;
+document.getElementById('outcome').textContent = result;
+}
+    </script>
+</body>
+</html>
